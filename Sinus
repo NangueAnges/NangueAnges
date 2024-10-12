@@ -1,0 +1,48 @@
+#include<iostream>
+
+double puissance(double x, int n);
+
+double factoriel(int n);
+
+double sinus(double x, int n);
+
+int main(int argc, char** argv){
+	double x;
+	int n;
+	
+	std::cout<<"entrer l'angle en radian:"<<std::endl;
+	std::cin>>x;
+	std::cout<<"entrer le nombre de termes pour le developpement limite"<<std::endl;
+	std::cin>>n;
+	double sin= sinus(x,n);
+	std::cout<<"sin de "<<x<<" :"<<sin<<std::endl;
+	return 0;
+	
+}
+
+double puissance(double x, int n){
+	double resultat = 1;
+	int i;
+	for(i=0; i<n; i++){
+		resultat=resultat*x;
+	}return resultat;
+}
+
+double factoriel(int n){
+	long fact=1;
+	int i;
+	for(i=1; i<=n; i++){
+	fact =fact*i;
+	}
+	return fact;
+}
+
+double sinus(double x, int n){
+	double sin=0;
+	int i;
+	for(i=0; i<=n; i++){
+		sin=sin+ puissance(-1,i)* puissance(x,2*i+1)/factoriel(2*i+1);
+	}
+	return sin;
+}
+
